@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail # Bash "strict mode"
+#set -euo pipefail # Bash "strict mode"
 
 missing_var=false
 if [ -z "$1" ]; then

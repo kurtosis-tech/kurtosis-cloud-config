@@ -6,7 +6,6 @@ TARGET="ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/contain
 REPLACEMENT="ExecStart=/usr/bin/dockerd --tlsverify --tlscacert=/root/ca.pem --tlscert=/root/server-cert.pem --tlskey=/root/server-key.pem -H=0.0.0.0:9722 -H fd:// --containerd=/run/containerd/containerd.sock"
 sed -i 's!'"$TARGET"'!'"$REPLACEMENT"'!g' test.txt
 
-# Finally reload
 systemctl daemon-reload
 systemctl restart docker
 systemctl enable kurtosis-portal

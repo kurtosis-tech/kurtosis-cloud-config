@@ -5,11 +5,11 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-PATH="$1"
+WORK_DIR="$1"
 
 cp "kurtosis-portal.service" "/lib/systemd/system/kurtosis-portal.service"
 TARGET="ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock"
-REPLACEMENT="ExecStart=/usr/bin/dockerd --tlsverify --tlscacert=$PATH/ca.pem --tlscert=$PATH/server-cert.pem --tlskey=$PATH/server-key.pem -H=0.0.0.0:9722 -H fd:// --containerd=/run/containerd/containerd.sock"
+REPLACEMENT="ExecStart=/usr/bin/dockerd --tlsverify --tlscacert=$WORK_DIR/ca.pem --tlscert=$WORK_DIR/server-cert.pem --tlskey=$WORK_DIR/server-key.pem -H=0.0.0.0:9722 -H fd:// --containerd=/run/containerd/containerd.sock"
 sed -i 's!'"$TARGET"'!'"$REPLACEMENT"'!g' /lib/systemd/system/docker.service
 
 systemctl daemon-reload

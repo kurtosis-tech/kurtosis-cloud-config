@@ -27,7 +27,7 @@ if [ -z "$5" ]; then
 fi
 
 if [ -z "$6" ]; then
-  echo "Error: No path defined as sixth argument"
+  echo "Error: No work dir defined as sixth argument"
   missing_var=true
 fi
 
@@ -40,10 +40,10 @@ IP="$2"
 PASSWORD="$3"
 UUID="$4"
 NAME="$5"
-PATH="$6"
+WORK_DIR="$6"
 
 sh generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
 sh install.sh
-sh configure_processes.sh "$PATH"
+sh configure_processes.sh "$WORK_DIR"
 sh generate_cloud_connection.sh "$UUID" "$NAME" "$IP"
 

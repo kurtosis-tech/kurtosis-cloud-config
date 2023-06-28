@@ -1,3 +1,5 @@
+#!/bin/bash
+
 apt-get update
 apt-get install -y ca-certificates curl gnupg lsb-release jq
 mkdir -m 0755 -p /etc/apt/keyrings

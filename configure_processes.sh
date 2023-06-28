@@ -1,8 +1,15 @@
 #!/bin/bash
 
+if [ -z "$1" ]; then
+  echo "Error: No path defined as first argument"
+  exit 1
+fi
+
+PATH="$1"
+
 cp "kurtosis-portal.service" "/lib/systemd/system/kurtosis-portal.service"
 TARGET="ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock"
-REPLACEMENT="ExecStart=/usr/bin/dockerd --tlsverify --tlscacert=/root/ca.pem --tlscert=/root/server-cert.pem --tlskey=/root/server-key.pem -H=0.0.0.0:9722 -H fd:// --containerd=/run/containerd/containerd.sock"
+REPLACEMENT="ExecStart=/usr/bin/dockerd --tlsverify --tlscacert=$PATH/ca.pem --tlscert=$PATH/server-cert.pem --tlskey=$PATH/server-key.pem -H=0.0.0.0:9722 -H fd:// --containerd=/run/containerd/containerd.sock"
 sed -i 's!'"$TARGET"'!'"$REPLACEMENT"'!g' /lib/systemd/system/docker.service
 
 systemctl daemon-reload

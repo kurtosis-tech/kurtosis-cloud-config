@@ -26,6 +26,11 @@ if [ -z "$5" ]; then
   missing_var=true
 fi
 
+if [ -z "$6" ]; then
+  echo "Error: No path defined as sixth argument"
+  missing_var=true
+fi
+
 if [ "$missing_var" = true ]; then
   exit 1
 fi
@@ -35,9 +40,10 @@ IP="$2"
 PASSWORD="$3"
 UUID="$4"
 NAME="$5"
+PATH="$6"
 
 sh generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
 sh install.sh
-sh configure_processes.sh
+sh configure_processes.sh "$PATH"
 sh generate_cloud_connection.sh "$UUID" "$NAME" "$IP"
 

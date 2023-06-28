@@ -37,8 +37,8 @@ UUID="$4"
 NAME="$5"
 
 
-sh certificates/generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
-sh software-install/install.sh
-sh configure/configure.sh
-sh cloud-connection/generate_cloud_connection.sh "$UUID" "$NAME" "$IP"
+sh generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
+sh install.sh
+sh configure.sh
+sh generate_cloud_connection.sh "$UUID" "$NAME" "$IP"
 

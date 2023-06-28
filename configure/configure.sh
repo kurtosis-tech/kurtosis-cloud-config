@@ -1,5 +1,4 @@
 #!/bin/bash
-#set -euo pipefail # Bash "strict mode"
 
 cp "kurtosis-portal.service" "/lib/systemd/system/kurtosis-portal.service"
 TARGET="ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock"

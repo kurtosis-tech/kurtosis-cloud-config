@@ -31,13 +31,13 @@ replace_values () {
   sed -i 's!'"$TARGET"'!'"$REPLACEMENT"'!g' "$CONFIG_FILE"
 }
 
-ca_pem_base64 = $(base64 -w0 ca.pem)
+ca_pem_base64=$(base64 -w0 ca.pem)
 client_cert_base64=$(base64 -w0 client-cert.pem)
-client_key=$(base64 -w0 client-key.pem >client-key.pem.base64)
+client_key=$(base64 -w0 client-key.pem)
 
-replace_values "{UUID}", "$UUID"
-replace_values "{NAME}", "$NAME"
-replace_values "{IP}", "$IP"
-replace_values "{CA}", "$ca_pem_base64"
-replace_values "{CLIENT_CERT}", "$client_cert_base64"
-replace_values "{CLIENT_KEY}", "$client_key"
+replace_values "{UUID}" "$UUID"
+replace_values "{NAME}" "$NAME"
+replace_values "{IP}" "$IP"
+replace_values "{CA}" "$ca_pem_base64"
+replace_values "{CLIENT_CERT}" "$client_cert_base64"
+replace_values "{CLIENT_KEY}" "$client_key"

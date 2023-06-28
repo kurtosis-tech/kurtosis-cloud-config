@@ -6,7 +6,7 @@ Wants=ndocker.service
 
 [Service]
 Type=simple
-ExecStart=/root/kurtosis-portal --server-only --tls-ca /root/ca.pem --tls-server-cert /root/server-cert.pem --tls-server-key /root/server-key.pem
+ExecStart={WORK_DIR}/kurtosis-portal --server-only --tls-ca {WORK_DIR}/ca.pem --tls-server-cert {WORK_DIR}/server-cert.pem --tls-server-key {WORK_DIR}/server-key.pem
 ExecReload=/bin/kill -s HUP $MAINPID
 TimeoutStartSec=0
 RestartSec=2

@@ -25,13 +25,11 @@ HOST="$1"
 IP="$2"
 PASSWORD="$3"
 
-# pass in via files: https://security.stackexchange.com/questions/106525/generate-csr-and-private-key-with-password-with-openssl
+# TODO: pass in via files: https://security.stackexchange.com/questions/106525/generate-csr-and-private-key-with-password-with-openssl
+# The better option is to write out to a file and read that in as passing password via prompt is less secure
 
 # generate CA certificate key pair
-#openssl genrsa -aes256 -out ca-key.pem 4096 # set a strong password here this is the private key
 openssl genrsa -passout "pass:$PASSWORD" -aes256 -out ca-key.pem 4096 # set a strong password here this is the private key
-
-# The better option is to write out to a file and read that in
 #openssl genrsa -aes128 -passout file:passphrase.txt 3072
 openssl req -passin "pass:$PASSWORD" -new -x509 -subj "/C=US" -days 365 -key ca-key.pem -sha256 -out ca.pem
 

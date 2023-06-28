@@ -27,7 +27,7 @@ if [ -z "$5" ]; then
 fi
 
 if [ -z "$6" ]; then
-  echo "Error: No path defined as sixt argument"
+  echo "Error: No path defined as sixth argument"
   missing_var=true
 fi
 

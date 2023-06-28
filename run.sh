@@ -36,9 +36,8 @@ PASSWORD="$3"
 UUID="$4"
 NAME="$5"
 
-
 sh generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
 sh install.sh
-sh configure.sh
+sh configure_processes.sh
 sh generate_cloud_connection.sh "$UUID" "$NAME" "$IP"
 

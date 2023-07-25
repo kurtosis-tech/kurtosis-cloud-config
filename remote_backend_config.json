@@ -1,0 +1,8 @@
+{
+  "endpoint": "{ENDPOINT}",
+  "tlsConfig": {
+    "certificateAuthority": "{CA}",
+    "clientCertificate": "{CLIENT_CERT}",
+    "clientKey": "{CLIENT_KEY}"
+  }
+}

@@ -7,12 +7,12 @@ if [ -z "$1" ]; then
 fi
 
 if [ -z "$2" ]; then
-  echo "Error: No name defined as first argument"
+  echo "Error: No name defined as second argument"
   missing_var=true
 fi
 
 if [ -z "$3" ]; then
-  echo "Error: No IP defined as first argument"
+  echo "Error: No IP defined as third argument"
   missing_var=true
 fi
 

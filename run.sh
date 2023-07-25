@@ -41,8 +41,8 @@ PASSWORD="$3"
 UUID="$4"
 NAME="$5"
 WORK_DIR="$6"
-# Set remote backend endpoint to localhost for now since the remote backend host and the bastion are the same host. 
-REMOTE_BACKEND_ENDPOINT="127.0.0.1"
+# Set remote backend endpoint host to this host for now since the remote backend host and the bastion are the same host.
+REMOTE_BACKEND_ENDPOINT="tcp://$IP:9722"
 
 sh generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
 sh install.sh

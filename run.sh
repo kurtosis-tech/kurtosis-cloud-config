@@ -31,6 +31,16 @@ if [ -z "$6" ]; then
   missing_var=true
 fi
 
+if [ -z "$7" ]; then
+  echo "Error: No remote IP defined as seventh argument"
+  missing_var=true
+fi
+
+if [ -z "$7" ]; then
+  echo "Error: No instance type defined as eight argument"
+  missing_var=true
+fi
+
 if [ "$missing_var" = true ]; then
   exit 1
 fi
@@ -41,11 +51,23 @@ PASSWORD="$3"
 UUID="$4"
 NAME="$5"
 WORK_DIR="$6"
-# Set remote backend endpoint host to this host for now since the remote backend host and the bastion are the same host.
-REMOTE_BACKEND_ENDPOINT="tcp://$IP:9722"
+REMOTE_IP="$7"
+INSTANCE_TYPE="$8"
 
-sh generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
-sh install.sh
-sh configure_processes.sh "$WORK_DIR"
-sh generate_cloud_connection.sh "$UUID" "$NAME" "$IP"
-sh generate_remote_backend_config.sh "$REMOTE_BACKEND_ENDPOINT"
+if [ "$INSTANCE_TYPE" != "BASTION" ] && [ "$INSTANCE_TYPE" != "BACKEND" ]; then
+  echo "The instance type should be set to BASTION or BACKEND"
+  exit 1
+fi
+
+REMOTE_BACKEND_ENDPOINT="tcp://$REMOTE_IP:9722"
+
+if [ "$INSTANCE_TYPE" == "BASTION" ]; then
+  sh generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
+  sh install.sh "$INSTANCE_TYPE"
+  sh configure_processes.sh "$WORK_DIR" "$INSTANCE_TYPE"
+  sh generate_cloud_connection.sh "$UUID" "$NAME" "$IP"
+  sh generate_remote_backend_config.sh "$REMOTE_BACKEND_ENDPOINT"
+elif [ "$INSTANCE_TYPE" == "BACKEND" ]; then
+  sh install.sh "$INSTANCE_TYPE"
+  sh configure_processes.sh "$WORK_DIR" "$INSTANCE_TYPE"
+fi

@@ -13,7 +13,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 apt-get update
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-if [ "$INSTANCE_TYPE" == "bastion" ]; then
+if [ "$INSTANCE_TYPE" = "bastion" ]; then
     wget https://github.com/kurtosis-tech/kurtosis-portal/releases/download/0.0.3/kurtosis-portal_0.0.3_linux_amd64.tar.gz
     tar zxvf kurtosis-portal_0.0.3_linux_amd64.tar.gz
     rm kurtosis-portal_0.0.3_linux_amd64.tar.gz

@@ -61,13 +61,13 @@ fi
 
 REMOTE_BACKEND_ENDPOINT="tcp://$REMOTE_IP:9722"
 
-if [ "$INSTANCE_TYPE" == "bastion" ]; then
+if [ "$INSTANCE_TYPE" = "bastion" ]; then
   bash generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
   bash install.sh "$INSTANCE_TYPE"
   bash configure_processes.sh "$WORK_DIR" "$REMOTE_IP" "$INSTANCE_TYPE"
   bash generate_cloud_connection.sh "$UUID" "$NAME" "$IP"
   bash generate_remote_backend_config.sh "$REMOTE_BACKEND_ENDPOINT"
-elif [ "$INSTANCE_TYPE" == "backend" ]; then
+elif [ "$INSTANCE_TYPE" = "backend" ]; then
   bash install.sh "$INSTANCE_TYPE"
   bash configure_processes.sh "$WORK_DIR" "$REMOTE_IP" "$INSTANCE_TYPE"
 fi

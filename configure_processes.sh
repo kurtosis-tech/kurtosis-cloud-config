@@ -31,7 +31,7 @@ replace_values () {
   sed -i 's!'"$TARGET"'!'"$REPLACEMENT"'!g' "$CONFIG_FILE"
 }
 
-if [ "$INSTANCE_TYPE" == "bastion" ]; then
+if [ "$INSTANCE_TYPE" = "bastion" ]; then
   TARGET="{WORK_DIR}"
   REPLACEMENT="$WORK_DIR"
   replace_values "$TARGET" "$REPLACEMENT" "kurtosis-portal.service"
@@ -42,16 +42,16 @@ if [ "$INSTANCE_TYPE" == "bastion" ]; then
 fi
 
 TARGET="ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock"
-if [ "$INSTANCE_TYPE" == "bastion" ]; then
+if [ "$INSTANCE_TYPE" = "bastion" ]; then
   REPLACEMENT="ExecStart=/usr/bin/dockerd --tlsverify --tlscacert=$WORK_DIR/ca.pem --tlscert=$WORK_DIR/server-cert.pem --tlskey=$WORK_DIR/server-key.pem -H=0.0.0.0:9722 -H fd:// --containerd=/run/containerd/containerd.sock"
-elif [ "$INSTANCE_TYPE" == "backend" ]; then
+elif [ "$INSTANCE_TYPE" = "backend" ]; then
   REPLACEMENT="ExecStart=/usr/bin/dockerd -H=0.0.0.0:9722 -H fd:// --containerd=/run/containerd/containerd.sock"
 fi
 replace_values "$TARGET" "$REPLACEMENT" "/lib/systemd/system/docker.service"
 
 systemctl daemon-reload
 systemctl restart docker
-if [ "$INSTANCE_TYPE" == "bastion" ]; then
+if [ "$INSTANCE_TYPE" = "bastion" ]; then
   systemctl enable kurtosis-portal
   systemctl start kurtosis-portal
 fi

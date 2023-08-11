@@ -54,20 +54,20 @@ WORK_DIR="$6"
 REMOTE_IP="$7"
 INSTANCE_TYPE="$8"
 
-if [ "$INSTANCE_TYPE" != "BASTION" ] && [ "$INSTANCE_TYPE" != "BACKEND" ]; then
-  echo "The instance type should be set to BASTION or BACKEND"
+if [ "$INSTANCE_TYPE" != "bastion" ] && [ "$INSTANCE_TYPE" != "backend" ]; then
+  echo "The instance type should be set to bastion or backend"
   exit 1
 fi
 
 REMOTE_BACKEND_ENDPOINT="tcp://$REMOTE_IP:9722"
 
-if [ "$INSTANCE_TYPE" == "BASTION" ]; then
+if [ "$INSTANCE_TYPE" == "bastion" ]; then
   sh generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
   sh install.sh "$INSTANCE_TYPE"
-  sh configure_processes.sh "$WORK_DIR" "$INSTANCE_TYPE"
+  sh configure_processes.sh "$WORK_DIR" "$REMOTE_IP" "$INSTANCE_TYPE"
   sh generate_cloud_connection.sh "$UUID" "$NAME" "$IP"
   sh generate_remote_backend_config.sh "$REMOTE_BACKEND_ENDPOINT"
-elif [ "$INSTANCE_TYPE" == "BACKEND" ]; then
+elif [ "$INSTANCE_TYPE" == "backend" ]; then
   sh install.sh "$INSTANCE_TYPE"
-  sh configure_processes.sh "$WORK_DIR" "$INSTANCE_TYPE"
+  sh configure_processes.sh "$WORK_DIR" "$REMOTE_IP" "$INSTANCE_TYPE"
 fi

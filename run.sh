@@ -36,7 +36,7 @@ if [ -z "$7" ]; then
   missing_var=true
 fi
 
-if [ -z "$7" ]; then
+if [ -z "$8" ]; then
   echo "Error: No instance type defined as eight argument"
   missing_var=true
 fi

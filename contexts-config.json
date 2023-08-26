@@ -1,0 +1,32 @@
+{
+    "currentContextUuid": {
+      "value": "{UUID}"
+    },
+    "contexts": [
+      {
+        "uuid": {
+          "value": ""
+        },
+        "name": "default",
+        "localOnlyContextV0": {}
+      },
+      {
+        "uuid": {
+          "value": "{UUID}"
+        },
+        "name": "kloud-{UUID}",
+        "remoteContextV0": {
+          "host": "{IP}",
+          "remotePortalPort": 9720,
+          "kurtosisBackendPort": 9722,
+          "tunnelPort": 9721,
+          "tlsConfig": {
+            "certificateAuthority": "{CA}",
+            "clientCertificate": "{CLIENT_CERT}",
+            "clientKey": "{CLIENT_KEY}"
+          },
+          "envVars": "{}"
+        }
+      }
+    ]
+}

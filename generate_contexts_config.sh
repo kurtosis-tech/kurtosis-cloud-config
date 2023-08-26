@@ -16,7 +16,7 @@ if [ "$missing_var" = true ]; then
 fi
 
 UUID="$1"
-IP="$3"
+IP="$2"
 CONFIG_FILE="contexts-config.json"
 
 replace_values () {

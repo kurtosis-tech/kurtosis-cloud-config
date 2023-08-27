@@ -27,7 +27,12 @@ if [ -z "$5" ]; then
 fi
 
 if [ -z "$6" ]; then
-  echo "Error: No work dir defined as sixth argument"
+  echo "Error: No aws env defined as sixth argument"
+  missing_var=true
+fi
+
+if [ -z "$7" ]; then
+  echo "Error: No work dir defined as seventh argument"
   missing_var=true
 fi
 
@@ -40,7 +45,8 @@ IP="$2"
 PASSWORD="$3"
 UUID="$4"
 NAME="$5"
-WORK_DIR="$6"
+AWS_ENV="$6"
+WORK_DIR="$7"
 # Set remote backend endpoint host to this host for now since the remote backend host and the bastion are the same host.
 REMOTE_BACKEND_ENDPOINT="tcp://$IP:9722"
 
@@ -49,5 +55,5 @@ sh install.sh
 sh configure_processes.sh "$WORK_DIR"
 sh generate_cloud_connection.sh "$UUID" "$NAME" "$IP"
 sh generate_remote_backend_config.sh "$REMOTE_BACKEND_ENDPOINT"
-sh generate_contexts_config.sh "$UUID" "$NAME" "$IP"
+sh generate_contexts_config.sh "$UUID" "$NAME" "$IP" "$AWS_ENV"
 sh start_engine.sh

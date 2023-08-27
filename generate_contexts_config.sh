@@ -16,6 +16,11 @@ if [ -z "$3" ]; then
   missing_var=true
 fi
 
+if [ -z "$4" ]; then
+  echo "Error: No AWS Environment defined as fourth argument"
+  missing_var=true
+fi
+
 if [ "$missing_var" = true ]; then
   exit 1
 fi
@@ -23,6 +28,7 @@ fi
 UUID="$1"
 NAME="$2"
 IP="$3"
+AWS_ENV="$4"
 CONFIG_FILE="contexts-config.json"
 
 replace_values () {
@@ -38,6 +44,7 @@ client_key=$(base64 -w0 client-key.pem)
 replace_values "{UUID}" "$UUID"
 replace_values "{NAME}" "$NAME"
 replace_values "{IP}" "$IP"
+replace_values "{AWS_ENV}" "$AWS_ENV"
 replace_values "{CA}" "$ca_pem_base64"
 replace_values "{CLIENT_CERT}" "$client_cert_base64"
 replace_values "{CLIENT_KEY}" "$client_key"

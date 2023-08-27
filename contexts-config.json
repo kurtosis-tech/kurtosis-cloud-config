@@ -25,7 +25,7 @@
             "clientCertificate": "{CLIENT_CERT}",
             "clientKey": "{CLIENT_KEY}"
           },
-          "envVars": "{}"
+          "envVars": "{AWS_ENV}"
         }
       }
     ]

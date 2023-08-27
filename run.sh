@@ -49,5 +49,5 @@ sh install.sh
 sh configure_processes.sh "$WORK_DIR"
 sh generate_cloud_connection.sh "$UUID" "$NAME" "$IP"
 sh generate_remote_backend_config.sh "$REMOTE_BACKEND_ENDPOINT"
-sh generate_contexts_config.sh "$UUID" "$IP"
+sh generate_contexts_config.sh "$UUID" "$NAME" "$IP"
 sh start_engine.sh

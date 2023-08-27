@@ -14,7 +14,7 @@
         "uuid": {
           "value": "{UUID}"
         },
-        "name": "kloud-{UUID}",
+        "name": "{NAME}",
         "remoteContextV0": {
           "host": "{IP}",
           "remotePortalPort": 9720,

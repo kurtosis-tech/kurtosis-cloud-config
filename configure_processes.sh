@@ -26,4 +26,4 @@ replace_values "$TARGET" "$REPLACEMENT" "/lib/systemd/system/docker.service"
 systemctl daemon-reload
 systemctl restart docker
 systemctl enable kurtosis-portal
-systemctl start kurtosis-portal
+systemctl restart kurtosis-portal

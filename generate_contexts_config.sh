@@ -57,4 +57,5 @@ replace_values "{CA}" "$ca_pem_base64"
 replace_values "{CLIENT_CERT}" "$client_cert_base64"
 replace_values "{CLIENT_KEY}" "$client_key"
 
+mkdir -p $HOME/.config/kurtosis
 cp $CONFIG_FILE $HOME/.config/kurtosis/$CONFIG_FILE

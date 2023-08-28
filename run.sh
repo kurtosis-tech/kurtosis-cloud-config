@@ -46,12 +46,12 @@ if [ -z "$9" ]; then
   missing_var=true
 fi
 
-if [ -z "$10" ]; then
+if [ -z "${10}" ]; then
   echo "Error: No aws bucket user folder defined as tenth argument"
   missing_var=true
 fi
 
-if [ -z "$11" ]; then
+if [ -z "${11}" ]; then
   echo "Error: No work dir defined as eleventh argument"
   missing_var=true
 fi
@@ -69,8 +69,8 @@ AWS_ACCESS_KEY_ID="$6"
 AWS_SECRET_ACCESS_KEY="$7"
 AWS_BUCKET_REGION="$8"
 AWS_BUCKET_NAME="$9"
-AWS_BUCKET_USER_FOLDER="$10"
-WORK_DIR="$11"
+AWS_BUCKET_USER_FOLDER="${10}"
+WORK_DIR="${11}"
 # Set remote backend endpoint host to this host for now since the remote backend host and the bastion are the same host.
 REMOTE_BACKEND_ENDPOINT="tcp://$IP:9722"
 

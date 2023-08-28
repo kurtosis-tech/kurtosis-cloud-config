@@ -1,0 +1,38 @@
+{
+    "currentContextUuid": {
+      "value": "{UUID}"
+    },
+    "contexts": [
+      {
+        "uuid": {
+          "value": ""
+        },
+        "name": "default",
+        "localOnlyContextV0": {}
+      },
+      {
+        "uuid": {
+          "value": "{UUID}"
+        },
+        "name": "{NAME}",
+        "remoteContextV0": {
+          "host": "{IP}",
+          "remotePortalPort": 9720,
+          "kurtosisBackendPort": 9722,
+          "tunnelPort": 9721,
+          "tlsConfig": {
+            "certificateAuthority": "{CA}",
+            "clientCertificate": "{CLIENT_CERT}",
+            "clientKey": "{CLIENT_KEY}"
+          },
+          "envVars": {
+            "AWS_ACCESS_KEY_ID": "{AWS_ACCESS_KEY_ID}",
+            "AWS_SECRET_ACCESS_KEY": "{AWS_SECRET_ACCESS_KEY}",
+            "AWS_BUCKET_REGION": "{AWS_BUCKET_REGION}",
+            "AWS_BUCKET_NAME": "{AWS_BUCKET_NAME}",
+            "AWS_BUCKET_USER_FOLDER": "{AWS_BUCKET_USER_FOLDER}"
+          }
+        }
+      }
+    ]
+}

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kurtosis analytics disable
+kurtosis analytics enable
 kurtosis engine start
 if [ $? -eq 0 ]; then
     echo "Engine started"

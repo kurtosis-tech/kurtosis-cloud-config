@@ -45,6 +45,8 @@ ca_pem_base64=$(base64 -w0 ca.pem)
 client_cert_base64=$(base64 -w0 client-cert.pem)
 client_key=$(base64 -w0 client-key.pem)
 
+cloud_user_id="${AWS_BUCKET_USER_FOLDER##*-}"
+
 replace_values "{UUID}" "$UUID"
 replace_values "{NAME}" "$NAME"
 replace_values "{IP}" "$IP"
@@ -56,6 +58,8 @@ replace_values "{AWS_BUCKET_USER_FOLDER}" "$AWS_BUCKET_USER_FOLDER"
 replace_values "{CA}" "$ca_pem_base64"
 replace_values "{CLIENT_CERT}" "$client_cert_base64"
 replace_values "{CLIENT_KEY}" "$client_key"
+replace_values "{CLOUD_USER_ID}" "$cloud_user_id"
+replace_values "{CLOUD_INSTANCE_ID}" "$UUID"
 
 mkdir -p $HOME/.config/kurtosis
 cp $CONFIG_FILE $HOME/.config/kurtosis/$CONFIG_FILE

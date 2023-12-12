@@ -13,6 +13,9 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 apt-get update
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
+# K3s
+curl -sfL https://get.k3s.io | sh -
+
 # Kurtosis Portal
 PORTAL_VERSION="0.0.6"
 PROTAL_PACKAGE_FILE="kurtosis-portal_"$PORTAL_VERSION"_linux_amd64.tar.gz" 

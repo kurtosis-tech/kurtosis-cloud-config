@@ -14,9 +14,11 @@ apt-get update
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Kurtosis Portal
-wget https://github.com/kurtosis-tech/kurtosis-portal/releases/download/0.0.6/kurtosis-portal_0.0.6_linux_amd64.tar.gz
-tar zxvf kurtosis-portal_0.0.6_linux_amd64.tar.gz
-rm kurtosis-portal_0.0.6_linux_amd64.tar.gz
+PORTAL_VERSION="0.0.6"
+PROTAL_PACKAGE_FILE="kurtosis-portal_"$PORTAL_VERSION"_linux_amd64.tar.gz" 
+wget https://github.com/kurtosis-tech/kurtosis-portal/releases/download/$PORTAL_VERSION/$PROTAL_PACKAGE_FILE
+tar zxvf $PROTAL_PACKAGE_FILE
+rm $PROTAL_PACKAGE_FILE
 
 # Kurtosis CLI
 echo "deb [trusted=yes] https://apt.fury.io/kurtosis-tech/ /" | sudo tee /etc/apt/sources.list.d/kurtosis.list

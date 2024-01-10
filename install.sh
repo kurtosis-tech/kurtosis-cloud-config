@@ -16,5 +16,7 @@ tar zxvf kurtosis-portal_0.0.6_linux_amd64.tar.gz
 rm kurtosis-portal_0.0.6_linux_amd64.tar.gz
 
 # Kurtosis CLI
+systemctl restart unattended-upgrades.service
 echo "deb [trusted=yes] https://apt.fury.io/kurtosis-tech/ /" | sudo tee /etc/apt/sources.list.d/kurtosis.list
+apt update
 apt-get install kurtosis-cli

@@ -6,5 +6,6 @@ dpkg -i -E ./amazon-cloudwatch-agent.deb
 mkdir -p /usr/share/collectd/
 touch /usr/share/collectd/types.db
 /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json -s
+sleep 2s
 /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a status -m ec2
 echo "Configuring cloudwatch logs: Completed"

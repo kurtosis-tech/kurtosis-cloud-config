@@ -74,6 +74,7 @@ WORK_DIR="${11}"
 # Set remote backend endpoint host to this host for now since the remote backend host and the bastion are the same host.
 REMOTE_BACKEND_ENDPOINT="tcp://$IP:9722"
 
+sh configure_logging.sh
 sh generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
 sh install.sh
 sh configure_processes.sh "$WORK_DIR"

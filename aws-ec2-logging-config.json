@@ -1,6 +1,6 @@
 {
   "agent": {
-    "metrics_collection_interval": 60,
+    "metrics_collection_interval": 14,
     "run_as_user": "cwagent"
   },
   "logs": {

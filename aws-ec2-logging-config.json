@@ -1,6 +1,6 @@
 {
   "agent": {
-    "metrics_collection_interval": 14,
+    "metrics_collection_interval": 60,
     "run_as_user": "cwagent"
   },
   "logs": {
@@ -12,7 +12,7 @@
             "log_group_class": "STANDARD",
             "log_group_name": "/ec2/cloud/kurtosis_installation.log",
             "log_stream_name": "{instance_id}",
-            "retention_in_days": 60
+            "retention_in_days": 14
           }
         ]
       }

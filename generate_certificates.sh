@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -v
+
 missing_var=false
 if [ -z "$1" ]; then
   echo "Error: No hostname defined as first argument"

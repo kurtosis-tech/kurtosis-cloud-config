@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -v
+
 echo "Configuring cloudwatch logs: Starting"
 #cp aws-ec2-logging-config.json /opt/aws/amazon-cloudwatch-agent/bin/config.json
 wget https://amazoncloudwatch-agent.s3.amazonaws.com/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -v
+
 if [ -z "$1" ]; then
   echo "Error: No path defined as first argument"
   exit 1

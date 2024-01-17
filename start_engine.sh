@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -v
+
 kurtosis analytics enable
 kurtosis engine start
 if [ $? -eq 0 ]; then

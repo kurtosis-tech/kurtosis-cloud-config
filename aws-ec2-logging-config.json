@@ -11,7 +11,7 @@
             "file_path": "/var/log/kurtosis_installation.log",
             "log_group_class": "STANDARD",
             "log_group_name": "/ec2/cloud/kurtosis_installation.log",
-            "log_stream_name": "{instance_id}",
+            "log_stream_name": "{KURTOSIS_NAME} - {instance_id}",
             "retention_in_days": 14
           }
         ]

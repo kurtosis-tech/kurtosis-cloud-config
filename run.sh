@@ -1,5 +1,5 @@
 #!/bin/bash
-set -v
+set -euv
 
 missing_var=false
 if [ -z "$1" ]; then

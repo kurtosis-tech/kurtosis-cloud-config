@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -v
+set -euv
 
 if [ -z "$1" ]; then
   echo "Error: No path defined as first argument"

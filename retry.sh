@@ -1,6 +1,7 @@
+#!/bin/bash
 function retry {
   local retries=$1
-  shift 2
+  shift
 
   local count=0
   until "$@"; do

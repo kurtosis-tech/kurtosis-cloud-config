@@ -1,5 +1,5 @@
 #!/bin/bash
-set -v
+set -euv
 
 missing_var=false
 if [ -z "$1" ]; then
@@ -75,11 +75,12 @@ WORK_DIR="${11}"
 # Set remote backend endpoint host to this host for now since the remote backend host and the bastion are the same host.
 REMOTE_BACKEND_ENDPOINT="tcp://$IP:9722"
 
-sh configure_logging.sh "$NAME"
-sh generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
-sh install.sh
-sh configure_processes.sh "$WORK_DIR"
-sh generate_cloud_connection.sh "$UUID" "$NAME" "$IP"
-sh generate_remote_backend_config.sh "$REMOTE_BACKEND_ENDPOINT"
-sh generate_contexts_config.sh "$UUID" "$NAME" "$IP" "$AWS_ACCESS_KEY_ID" "$AWS_SECRET_ACCESS_KEY" "$AWS_BUCKET_REGION" "$AWS_BUCKET_NAME" "$AWS_BUCKET_USER_FOLDER"
-sh start_engine.sh
+bash pre.sh
+bash configure_logging.sh "$NAME"
+bash generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
+bash install.sh
+bash configure_processes.sh "$WORK_DIR"
+bash generate_cloud_connection.sh "$UUID" "$NAME" "$IP"
+bash generate_remote_backend_config.sh "$REMOTE_BACKEND_ENDPOINT"
+bash generate_contexts_config.sh "$UUID" "$NAME" "$IP" "$AWS_ACCESS_KEY_ID" "$AWS_SECRET_ACCESS_KEY" "$AWS_BUCKET_REGION" "$AWS_BUCKET_NAME" "$AWS_BUCKET_USER_FOLDER"
+bash start_engine.sh

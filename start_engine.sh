@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -v
+set -euv
 
 kurtosis analytics enable
 kurtosis engine start

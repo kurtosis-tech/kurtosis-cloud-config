@@ -76,7 +76,7 @@ WORK_DIR="${11}"
 REMOTE_BACKEND_ENDPOINT="tcp://$IP:9722"
 
 bash pre.sh
-bash configure_logging.sh "$NAME"
+bash configure_cloudwatch_agent.sh "$NAME"
 bash generate_certificates.sh  "$HOST" "$IP" "$PASSWORD"
 bash install.sh
 bash configure_processes.sh "$WORK_DIR"

@@ -32,7 +32,7 @@ retry 7 apt-get install -y ca-certificates curl gnupg lsb-release jq docker-ce d
 systemctl restart unattended-upgrades.service
 
 kurtosis analytics enable
-kurtosis engine start --domain $domain
+kurtosis engine start
 if [ $? -eq 0 ]; then
     echo "Engine started"
 else
@@ -40,5 +40,5 @@ else
     exit 1
 fi
 
-retry 7 curl -fsSL https://raw.githubusercontent.com/kurtosis-tech/kurtosis-cloud-config/main/self-hosting-nginx.conf -o /etc/ningx/nginx.conf
+retry 7 curl -fsSL https://raw.githubusercontent.com/kurtosis-tech/kurtosis-cloud-config/self-cloud-hosting/self-hosting-nginx.conf -o /etc/ningx/nginx.conf
 systemctl reload nginx

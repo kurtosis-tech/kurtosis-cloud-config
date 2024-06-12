@@ -40,5 +40,5 @@ else
     exit 1
 fi
 
-retry 7 curl -fsSL https://raw.githubusercontent.com/kurtosis-tech/kurtosis-cloud-config/laurent/self-cloud-hosting/self-hosting-nginx.conf -o /etc/ningx/nginx.conf
+retry 7 curl -fsSL https://raw.githubusercontent.com/kurtosis-tech/kurtosis-cloud-config/laurent/self-cloud-hosting/self-hosting-nginx.conf -o /etc/nginx/nginx.conf
 systemctl reload nginx

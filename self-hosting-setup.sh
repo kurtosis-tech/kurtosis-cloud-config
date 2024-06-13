@@ -34,7 +34,7 @@ retry 7 apt-get install -y ca-certificates curl gnupg lsb-release jq docker-ce d
 systemctl restart unattended-upgrades.service
 
 kurtosis analytics enable
-kurtosis engine start
+kurtosis engine start --domain $domain
 if [ $? -eq 0 ]; then
     echo "Engine started"
 else
